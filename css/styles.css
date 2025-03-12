@@ -95,6 +95,22 @@ nav {
 .precio--oferta {
   color: #e74c3c;
 }
+
+.producto__variantes {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.variante {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
 .info_producto {
   margin-top: auto;
 }

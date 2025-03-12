@@ -42,7 +42,14 @@
           <div class="info_producto">
             <h3 class="producto__nombre">Producto 1</h3>
             <p class="producto__precio precio--oferta">$100</p>
-            <button class="producto__boton">Añadir al carrito</button>
+            <div class="producto__variantes">
+              <div class="variante" style="background-color: red"></div>
+              <div class="variante" style="background-color: blue"></div>
+              <div class="variante" style="background-color: green"></div>
+            </div>
+            <div class="info_producto">
+              <button class="producto__boton">Añadir al carrito</button>
+            </div>
           </div>
         </article>
         <article class="producto">
@@ -50,7 +57,16 @@
           <div class="info_producto">
             <h3 class="producto__nombre">Producto 2</h3>
             <p class="producto__precio precio--oferta">$200</p>
-            <button class="producto__boton">Añadir al carrito</button>
+            <div class="producto__variantes">
+              <select name="variante" id="talla">
+                <option value="S">S</option>
+                <option value="M">M</option>
+                <option value="L">L</option>
+              </select>
+            </div>
+            <div class="info_producto">
+              <button class="producto__boton">Añadir al carrito</button>
+            </div>
           </div>
         </article>
         <article class="producto">
