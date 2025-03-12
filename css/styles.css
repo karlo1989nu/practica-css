@@ -55,13 +55,16 @@ nav {
   color: #e74c3c;
 }
 
+/* Estilos para la cuadrícula de productos */
+.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}
+
 /* Estilos para la tarjeta de producto */
 
-.productos {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-}
 .producto {
   width: 300px;
   height: auto;
