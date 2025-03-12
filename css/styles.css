@@ -34,6 +34,10 @@ nav {
   margin: 0;
   display: flex;
 }
+h1 {
+  font-size: 1.5em;
+  margin-left: 20px;
+}
 #mega-menu .submenu__item {
   margin: 0 20px;
 }
@@ -169,4 +173,110 @@ nav {
 
 #toggle-cart:hover {
   background-color: #555;
+}
+/* Estilos para el panel de filtros */
+.filter-panel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.filter-panel.visible {
+  transform: translateX(0);
+}
+
+#toggle-filters {
+  position: fixed;
+  top: 80px;
+  right: 110px;
+  background-color: #333;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1001;
+}
+
+#toggle-filters:hover {
+  background-color: #555;
+}
+
+/* Estilos para imágenes */
+img {
+  max-width: 100%;
+}
+
+/* Tamaños de fuente fluidos */
+body {
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+}
+
+/* Media queries para móviles */
+@media (max-width: 768px) {
+  .filter-panel {
+    position: absolute;
+    width: 100%;
+    height: auto;
+    transform: translateY(-100%);
+  }
+
+  .filter-panel.visible {
+    transform: translateY(0);
+  }
+
+  #toggle-filters {
+    top: 10px;
+    left: 10px;
+  }
+}
+/* Estilos para la sección hero */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+}
+
+/* Estilos para el carrusel */
+.carousel {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.carousel__item {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  display: none;
+  object-fit: cover; /* Asegura que la imagen cubra el contenedor */
+  image-rendering: auto;
+}
+
+.carousel__overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1.5rem;
+}
+
+.carousel__item:first-child {
+  display: block;
 }
