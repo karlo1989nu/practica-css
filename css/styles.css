@@ -25,22 +25,6 @@ nav {
   justify-content: space-between;
   align-items: center;
 }
-/* Estilos para los elementos de la barra de navegación */
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-}
-
-nav ul li {
-  margin: 0 15px;
-}
-
-nav ul li a {
-  color: #fff;
-  text-decoration: none;
-}
 
 /* Estilos para el mega menú */
 
@@ -61,9 +45,13 @@ nav ul li a {
   display: block;
   transition: background-color 0.3s;
 }
+#mega-menu .submenu__item a:hover {
+  background-color: #555;
+}
 
 /* Sobrescribir el color de un enlace usando un selector de atributo */
-#mega-menu .submenu__item a[category="nuevo"] {
+
+#mega-menu .submenu__item a:hover[category="nuevo"] {
   color: #e74c3c;
 }
 
