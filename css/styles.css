@@ -358,3 +358,30 @@ body {
 .carousel__item:first-child {
   display: block;
 }
+
+/* Estilos para el contador */
+.contador {
+  margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contador__texto {
+  font-size: 1rem;
+  color: #333;
+}
+
+.contador__tiempo {
+  font-size: 1.5rem;
+  color: #e74c3c;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
