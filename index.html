@@ -194,6 +194,16 @@
 
       showItem(currentIndex);
     </script>
+    <script>
+      document.querySelectorAll(".producto__boton").forEach((button) => {
+        button.addEventListener("click", function () {
+          this.classList.add("added");
+          setTimeout(() => {
+            this.classList.remove("added");
+          }, 1000); // Duración de la animación
+        });
+      });
+    </script>
     <footer>
       <p>&copy; 2025 Nozama</p>
     </footer>

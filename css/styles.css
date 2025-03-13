@@ -169,11 +169,47 @@ h1 {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
+  position: relative;
 }
 
 .producto__boton:hover {
   background-color: #555;
+}
+
+.producto__boton:active {
+  transform: scale(0.95);
+}
+
+.producto__boton::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: #fff;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.producto__boton.added::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@keyframes checkAnimation {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.producto__boton.added::after {
+  animation: checkAnimation 0.3s ease-in-out;
 }
 
 /* Efecto de zoom en la imagen al pasar el mouse sobre la tarjeta */
