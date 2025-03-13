@@ -31,6 +31,56 @@
       </nav>
     </header>
     <main>
+      <div>
+        <button id="toggle-filters">Filtros</button>
+        <aside id="filter-panel" class="filter-panel">
+          <h2>Filtros</h2>
+          <div class="filter-group">
+            <h3>Categorías</h3>
+            <ul>
+              <li>
+                <input type="checkbox" id="cat1" name="cat1" /><label for="cat1"
+                  >Categoría 1</label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="cat2" name="cat2" /><label for="cat2"
+                  >Categoría 2</label
+                >
+              </li>
+              <li>
+                <input type="checkbox" id="cat3" name="cat3" /><label for="cat3"
+                  >Categoría 3</label
+                >
+              </li>
+            </ul>
+          </div>
+          <!-- Más filtros -->
+        </aside>
+        <button id="toggle-cart">Carrito</button>
+      </div>
+      <section class="hero">
+        <div class="carousel">
+          <div
+            class="carousel__item"
+            style="background-image: url('./img/descuento.jpg')"
+          >
+            <div class="carousel__overlay">50% de descuento</div>
+          </div>
+          <div
+            class="carousel__item"
+            style="background-image: url('./img/envio.jpg')"
+          >
+            <div class="carousel__overlay">Envío gratis</div>
+          </div>
+          <div
+            class="carousel__item"
+            style="background-image: url('./img/nuevacoleccion.jpg')"
+          >
+            <div class="carousel__overlay">Nueva colección</div>
+          </div>
+        </div>
+      </section>
       <h2>Productos destacados</h2>
       <section class="productos">
         <button id="toggle-cart">Carrito</button>
@@ -96,6 +146,50 @@
         </article>
       </section>
     </main>
+    <script>
+      document
+        .getElementById("toggle-cart")
+        .addEventListener("click", function () {
+          const cart = document.getElementById("shopping-cart");
+          if (cart.classList.contains("visible")) {
+            cart.classList.remove("visible");
+          } else {
+            cart.classList.add("visible");
+          }
+        });
+    </script>
+    <script>
+      document
+        .getElementById("toggle-filters")
+        .addEventListener("click", function () {
+          const filters = document.getElementById("filter-panel");
+          if (filters.classList.contains("visible")) {
+            filters.classList.remove("visible");
+          } else {
+            filters.classList.add("visible");
+          }
+        });
+    </script>
+    <script>
+      let currentIndex = 0;
+      const items = document.querySelectorAll(".carousel__item");
+      const totalItems = items.length;
+
+      function showItem(index) {
+        items.forEach((item, i) => {
+          item.style.display = i === index ? "block" : "none";
+        });
+      }
+
+      function nextItem() {
+        currentIndex = (currentIndex + 1) % totalItems;
+        showItem(currentIndex);
+      }
+
+      setInterval(nextItem, 3000); // Cambia de banner cada 3 segundos
+
+      showItem(currentIndex);
+    </script>
     <footer>
       <p>&copy; 2025 Nozama</p>
     </footer>
