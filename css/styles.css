@@ -60,6 +60,14 @@ h1 {
 }
 
 /* Estilos para la cuadrícula de productos */
+
+/*.productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  padding: 1.5rem;
+}*/
+
 .productos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -69,7 +77,7 @@ h1 {
 
 /* Estilos para la tarjeta de producto */
 
-.producto {
+/*.producto {
   width: 300px;
   height: auto;
   background-color: #e8e8e8;
@@ -82,25 +90,58 @@ h1 {
   overflow: hidden;
   display: flex;
   flex-direction: column;
+}*/
+
+.producto {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
+
+/*.producto__imagen {
+  width: 100%;
+  transition: transform 0.3s;
+}*/
 
 .producto__imagen {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
   transition: transform 0.3s;
 }
+
+/*.producto__nombre {
+  font-size: 1.2em;
+  margin: 10px 0;
+}*/
 
 .producto__nombre {
   font-size: 1.2em;
   margin: 10px 0;
+  font-family: "Lato", sans-serif;
 }
+
+/*.producto__precio {
+  font-size: 1.1em;
+  color: #333;
+}*/
 
 .producto__precio {
   font-size: 1.1em;
   color: #333;
+  font-family: "Montserrat", sans-serif;
 }
 
 .precio--oferta {
   color: #e74c3c;
+  font-variation-settings: "wght" 700;
 }
 
 .producto__variantes {
@@ -128,11 +169,47 @@ h1 {
   padding: 10px 20px;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s;
+  transition: background-color 0.3s, transform 0.3s;
+  position: relative;
 }
 
 .producto__boton:hover {
   background-color: #555;
+}
+
+.producto__boton:active {
+  transform: scale(0.95);
+}
+
+.producto__boton::after {
+  content: "✔";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0);
+  color: #fff;
+  font-size: 1.5rem;
+  transition: transform 0.3s;
+}
+
+.producto__boton.added::after {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+@keyframes checkAnimation {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.producto__boton.added::after {
+  animation: checkAnimation 0.3s ease-in-out;
 }
 
 /* Efecto de zoom en la imagen al pasar el mouse sobre la tarjeta */
@@ -263,7 +340,6 @@ body {
   background-position: center;
   display: none;
   object-fit: cover; /* Asegura que la imagen cubra el contenedor */
-  image-rendering: auto;
 }
 
 .carousel__overlay {
@@ -275,8 +351,37 @@ body {
   padding: 10px 20px;
   border-radius: 5px;
   font-size: 1.5rem;
+  font-family: "Montserrat", sans-serif;
+  font-variation-settings: "wght" 700;
 }
 
 .carousel__item:first-child {
   display: block;
+}
+
+/* Estilos para el contador */
+.contador {
+  margin-top: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.contador__texto {
+  font-size: 1rem;
+  color: #333;
+}
+
+.contador__tiempo {
+  font-size: 1.5rem;
+  color: #e74c3c;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
