@@ -97,6 +97,7 @@
           <div class="info_producto">
             <h3 class="producto__nombre">Producto 1</h3>
             <p class="producto__precio precio--oferta">$100</p>
+            <div class="producto__rating">★★★★☆</div>
             <div class="producto__variantes">
               <div class="variante" style="background-color: red"></div>
               <div class="variante" style="background-color: blue"></div>
@@ -116,6 +117,7 @@
           <div class="info_producto">
             <h3 class="producto__nombre">Producto 2</h3>
             <p class="producto__precio precio--oferta">$200</p>
+            <div class="producto__rating">★★★★☆</div>
             <div class="producto__variantes">
               <select name="variante" id="talla">
                 <option value="S">S</option>
@@ -137,10 +139,11 @@
           <div class="info_producto">
             <h3 class="producto__nombre">Producto 3</h3>
             <p class="producto__precio precio--oferta">$300</p>
+            <div class="producto__rating">★★★★☆</div>
             <button class="producto__boton">Añadir al carrito</button>
           </div>
         </article>
-        <article class="producto">
+        <article class="producto producto--agotado">
           <img
             src="./img/juguete4.jpg"
             alt="Producto 4"
@@ -149,7 +152,8 @@
           <div class="info_producto">
             <h3 class="producto__nombre">Producto 4</h3>
             <p class="producto__precio precio--oferta">$400</p>
-            <button class="producto__boton">Añadir al carrito</button>
+            <div class="producto__rating">★★★★☆</div>
+            <button class="producto__boton" disabled>Agotado</button>
           </div>
         </article>
       </section>
@@ -236,6 +240,18 @@
         const display = document.querySelector("#contador-tiempo");
         startCountdown(countdownTime, display);
       };
+    </script>
+    <script>
+      document.querySelectorAll(".producto__boton").forEach((button) => {
+        button.addEventListener("click", function () {
+          if (!this.disabled) {
+            this.classList.add("added");
+            setTimeout(() => {
+              this.classList.remove("added");
+            }, 1000); // Duración de la animación
+          }
+        });
+      });
     </script>
     <footer>
       <p>&copy; 2025 Nozama</p>

@@ -5,15 +5,32 @@
   box-sizing: border-box;
 }
 
+/* Variables CSS para colores de marca, tipografía y breakpoints */
+:root {
+  --primario: #ff6b6b;
+  --secundario: #4ecdc4;
+  --fondo: #ffffff;
+  --texto: #333333;
+  --tipografia-principal: "Montserrat", sans-serif;
+  --tipografia-secundaria: "Lato", sans-serif;
+  --breakpoint-movil: 768px;
+}
+
+/* Modo oscuro */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --fondo: #333333;
+    --texto: #ffffff;
+  }
+}
+
 /* Estilos universales */
+
 body {
-  font-family: "Roboto", sans-serif;
-  font-size: 16px;
-  line-height: 1.5;
-  color: #333;
-  background-color: #f4f4f4;
-  margin: 0;
-  padding: 0;
+  font-family: var(--tipografia-principal);
+  background-color: var(--fondo);
+  color: var(--texto);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
 }
 
 /* Estilos de la barra de navegación */
@@ -61,13 +78,6 @@ h1 {
 
 /* Estilos para la cuadrícula de productos */
 
-/*.productos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 1.5rem;
-}*/
-
 .productos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -77,23 +87,8 @@ h1 {
 
 /* Estilos para la tarjeta de producto */
 
-/*.producto {
-  width: 300px;
-  height: auto;
-  background-color: #e8e8e8;
-  margin: 10px 10px;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  padding: 15px;
-  text-align: center;
-  transition: transform 0.3s;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-}*/
-
 .producto {
-  background-color: #fff;
+  background-color: var(--fondo);
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 15px;
@@ -105,11 +100,6 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/*.producto__imagen {
-  width: 100%;
-  transition: transform 0.3s;
-}*/
-
 .producto__imagen {
   width: 100%;
   height: 200px;
@@ -117,31 +107,31 @@ h1 {
   transition: transform 0.3s;
 }
 
-/*.producto__nombre {
-  font-size: 1.2em;
-  margin: 10px 0;
-}*/
+.producto__info {
+  margin-top: auto;
+}
 
 .producto__nombre {
   font-size: 1.2em;
   margin: 10px 0;
-  font-family: "Lato", sans-serif;
+  font-family: var(--tipografia-secundaria);
 }
-
-/*.producto__precio {
-  font-size: 1.1em;
-  color: #333;
-}*/
 
 .producto__precio {
   font-size: 1.1em;
-  color: #333;
-  font-family: "Montserrat", sans-serif;
+  color: var(--texto);
+  font-family: var(--tipografia-principal);
 }
 
 .precio--oferta {
-  color: #e74c3c;
+  color: var(--primario);
   font-variation-settings: "wght" 700;
+}
+
+.producto__rating {
+  font-size: 1rem;
+  color: #f39c12;
+  margin: 10px 0;
 }
 
 .producto__variantes {
@@ -162,9 +152,13 @@ h1 {
 .info_producto {
   margin-top: auto;
 }
-.producto__boton {
-  background-color: #333;
-  color: #fff;
+
+.producto__boton:hover {
+  background-color: #555;
+}
+*/ .producto__boton {
+  background-color: var(--primario);
+  color: var(--fondo);
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -174,7 +168,7 @@ h1 {
 }
 
 .producto__boton:hover {
-  background-color: #555;
+  background-color: var(--secundario);
 }
 
 .producto__boton:active {
@@ -187,7 +181,8 @@ h1 {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) scale(0);
-  color: #fff;
+  /*color: #fff;*/
+  color: var(--fondo);
   font-size: 1.5rem;
   transition: transform 0.3s;
 }
@@ -216,14 +211,26 @@ h1 {
 .producto:hover > .producto__imagen {
   transform: scale(1.1);
 }
+
+/* Estilos para el modificador de producto agotado */
+.producto--agotado {
+  opacity: 0.5;
+}
+
+.producto--agotado .producto__boton {
+  background-color: #aaa;
+  cursor: not-allowed;
+}
+
 /* Estilos para el carrito de compras flotante */
+
 #shopping-cart {
   position: fixed;
   top: 0;
   right: 0;
   width: 300px;
   height: 100%;
-  background-color: #fff;
+  background-color: var(--fondo);
   box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transform: translateX(100%);
@@ -235,12 +242,15 @@ h1 {
   transform: translateX(0);
 }
 
-#toggle-cart {
+#toggle-cart:hover {
+  background-color: #555;
+}
+*/ #toggle-cart {
   position: fixed;
   top: 80px;
   right: 20px;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--primario);
+  color: var(--fondo);
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -249,16 +259,18 @@ h1 {
 }
 
 #toggle-cart:hover {
-  background-color: #555;
+  background-color: var(--secundario);
 }
+
 /* Estilos para el panel de filtros */
+
 .filter-panel {
   position: fixed;
   top: 0;
   left: 0;
   width: 300px;
   height: 100%;
-  background-color: #fff;
+  background-color: var(--fondo);
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transform: translateX(-100%);
@@ -274,8 +286,8 @@ h1 {
   position: fixed;
   top: 80px;
   right: 110px;
-  background-color: #333;
-  color: #fff;
+  background-color: var(--primario);
+  color: var(--fondo);
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -284,7 +296,7 @@ h1 {
 }
 
 #toggle-filters:hover {
-  background-color: #555;
+  background-color: var(--secundario);
 }
 
 /* Estilos para imágenes */
@@ -298,7 +310,8 @@ body {
 }
 
 /* Media queries para móviles */
-@media (max-width: 768px) {
+
+@media (max-width: var(--breakpoint-movil)) {
   .filter-panel {
     position: absolute;
     width: 100%;
@@ -315,6 +328,7 @@ body {
     left: 10px;
   }
 }
+
 /* Estilos para la sección hero */
 .hero {
   position: relative;
